@@ -58,9 +58,10 @@ Trends 最后两天未结算，所有日序列读取先剔除。
 
 ## 上游同步
 
-本仓库跟踪上游 zhuyansen/new-term-radar。
-本地 main 只做快进，不产生分叉提交。
-同步三步：先 stash 本地文档改动，再 `git merge --ff-only upstream/main`，最后 `git stash pop`。
+本仓库跟踪上游 zhuyansen/new-term-radar，其远端名为 upstream。
+本地 main 只在上游之上加 GEB 文档提交，不改上游代码。
+同步：`git fetch upstream` 后执行 `git rebase upstream/main`。
+本地有未提交的文档改动时，先 `git stash`，rebase 后再 `git stash pop`。
 L3 契约写在模块 docstring 之上，与上游 docstring 分层，便于合并。
 上游改动某文件后，必须复核该文件的 L3 契约。
 
