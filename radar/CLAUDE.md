@@ -5,6 +5,7 @@
 CLI 串联评分、入库、复盘和报告输出。
 store 保存线索历史，snap 保存来源快照。
 usecases 把名字背后的通用词做成新词表。
+doctor 在运行前报出武装的信号、可用的凭证与花费。
 
 成员清单
 __init__.py: 包版本与公共 HTTP User-Agent。
@@ -12,6 +13,7 @@ __main__.py: sources/daily 编排、信号错误隔离与文件输出。
 aisa.py: AIsa 工具路由和兼容对话接口；禁止付费请求自动重试。
 breakout.py: GitHub 新仓库爆发信号，比较平均涨星与快照增量。
 config.py: 默认配置合并、语言初始化与已覆盖词判定。
+doctor.py: 起飞前检查；验证凭证、报出武装的信号与单次花费，只读不写。
 goanyapi.py: 可选第二数据源；提供 Trends 相关查询与国家日走势，无 key 时整体跳过。
 gsc.py: OAuth 刷新与 Search Console 新鲜曝光查询。
 i18n.py: 共享中英文报告文案与语言选择。
@@ -42,5 +44,7 @@ Sitemap 最少命中三个新增 URL，无 lift 下限。
 没配 GOANYAPI_API_KEY 时，新词表跳过相关查询与国家走势。
 Trends 最后两天未结算，所有日序列读取先剔除。
 每个名字读两次：出现当天一次，三天后一次。
+缺 AISA_API_KEY 时付费信号标为「缺凭证」，报告照出但所有词不排序。
+doctor 不打印任何凭证的值，只报有无。
 
 [PROTOCOL]: 变更时更新此头部，然后检查 CLAUDE.md

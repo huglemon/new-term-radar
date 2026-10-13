@@ -24,6 +24,8 @@ LICENSE - MIT 许可。
 包版本为 0.1.0，未提供 Web 服务与前端。
 `python -m radar sources` 运行 X 与 HF 信号。
 `python -m radar daily` 运行每日汇总与复盘。
+`python -m radar doctor` 在运行前报出武装的信号、可用的凭证与单次花费。
+doctor 只读，不写报告、不建库、不改快照；`--offline` 跳过全部联网检查。
 两类任务共享 state/radar.db 与压缩快照。
 分开调度时，daily 使用 `--skip x,hf`。
 

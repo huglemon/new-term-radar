@@ -1,12 +1,13 @@
 # --- 文件契约 ---
-# [INPUT]: 依赖配置、信号采集、名字判断、通用词、存储、报告与邮件模块。
-# [OUTPUT]: 提供 sources 与 daily 命令，写出报告及运行状态。
+# [INPUT]: 依赖配置、起飞前检查、信号采集、名字判断、通用词、存储、报告与邮件模块。
+# [OUTPUT]: 提供 daily、sources 与 doctor 命令，写出报告及运行状态。
 # [POS]: radar 的编排入口，隔离单个信号失败并串联输出；daily 先跑通用词并把线索入库。
 # [PROTOCOL]: 变更时更新此头部，然后检查 CLAUDE.md
 """new-term-radar: terms that are starting to surge, earliest signal first.
 
   python -m radar daily    [--config config.json] [--state state] [--out report.md] [--skip x,hf,...] [--new-sites] [--mail]
   python -m radar sources  [--config config.json] [--state state] [--out sources.md] [--mail]
+  python -m radar doctor   [--config config.json] [--state state] [--offline]
 
 Signals:
   ① x         names the accounts you follow said for the first time (AIsa)
@@ -24,6 +25,9 @@ apart, and it lists the ① leads of the last day from the database instead.
 
 A small model scores every term: the name of a specific new thing, or a common word?
 Names lead the report and are kept in state/radar.db for the review.
+
+`doctor` spends nothing and writes nothing: it prints which signals are armed, which
+credentials work, and what the next run will cost. Run it before the first `daily`.
 """
 from __future__ import annotations
 
@@ -33,7 +37,7 @@ import sys
 from datetime import date
 from pathlib import Path
 
-from . import breakout, config, gsc, new_sites, notify, report, review, sitemaps, sources, store, usecases
+from . import breakout, config, doctor, gsc, new_sites, notify, report, review, sitemaps, sources, store, usecases
 from .i18n import t
 
 SKIPPABLE = {"x", "hf", "breakout", "sitemaps", "newsites", "gsc", "review", "judge", "usecases"}
@@ -104,13 +108,14 @@ def cmd_daily(args, cfg: dict, state: Path) -> int:
 
 def main(argv: list[str] | None = None) -> int:
     p = argparse.ArgumentParser(prog="python -m radar", description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
-    p.add_argument("command", choices=["daily", "sources"])
+    p.add_argument("command", choices=["daily", "sources", "doctor"])
     p.add_argument("--config", default="config.json")
     p.add_argument("--state", default="state", help="directory for radar.db and the snapshots")
     p.add_argument("--out", help="write the report (Markdown) here; `daily` also writes a .json beside it")
     p.add_argument("--skip", default="", help="comma-separated: " + ",".join(sorted(SKIPPABLE)))
     p.add_argument("--new-sites", action="store_true", help="run the weekly new-site signal today")
     p.add_argument("--mail", action="store_true", help="mail the report (see radar/notify.py)")
+    p.add_argument("--offline", action="store_true", help="`doctor`: skip every network check")
     args = p.parse_args(argv)
     args.skip = {s for s in args.skip.split(",") if s}
     unknown = args.skip - SKIPPABLE
@@ -120,6 +125,9 @@ def main(argv: list[str] | None = None) -> int:
     if "judge" in args.skip:
         cfg["judge"]["model"] = ""
     state = Path(args.state)
+    if args.command == "doctor":   # reads the state; creating it is the run's job, not the check's
+        _finish(args, doctor.report(cfg, state, live=not args.offline), "New-term radar · doctor")
+        return 0
     state.mkdir(parents=True, exist_ok=True)
     return cmd_sources(args, cfg, state) if args.command == "sources" else cmd_daily(args, cfg, state)
 
