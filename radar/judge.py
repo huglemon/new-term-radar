@@ -1,3 +1,8 @@
+# --- 文件契约 ---
+# [INPUT]: 依赖 aisa.chat、候选词上下文与 judge 配置。
+# [OUTPUT]: 提供名字评分 score 与模型响应解析 parse。
+# [POS]: radar 的语义筛选边界；无分数时由报告保留候选词。
+# [PROTOCOL]: 变更时更新此头部，然后检查 CLAUDE.md
 """Is this term the name of a new thing, or a common word?
 
 The signals surface whatever is new in the text they read: "Opus 5.5" and "HyperFrames",

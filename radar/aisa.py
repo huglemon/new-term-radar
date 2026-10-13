@@ -1,3 +1,8 @@
+# --- 文件契约 ---
+# [INPUT]: 依赖标准库 HTTP、JSON 与环境变量 AISA_API_KEY。
+# [OUTPUT]: 提供工具调用 call、call_all、对话 chat 与 AisaError。
+# [POS]: radar 的付费服务边界；失败请求不自动重试。
+# [PROTOCOL]: 变更时更新此头部，然后检查 CLAUDE.md
 """Client for AIsa, the radar's one paid dependency: its tool router (X posts, Google
 Trends and whois data through DataForSEO) and its OpenAI-compatible chat endpoint (the
 name judge). One key, AISA_API_KEY.

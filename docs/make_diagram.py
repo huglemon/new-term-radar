@@ -1,3 +1,8 @@
+# --- 文件契约 ---
+# [INPUT]: 依赖外部命令 rsvg-convert 与 ffmpeg；变体名取自 VARIANTS。
+# [OUTPUT]: 写出 <base>.svg、<base>.gif、<base>.mp4 与 <base>.png 四种流程产物。
+# [POS]: docs 的唯一生成器，产物由两份 README 引用；不参与 radar 运行。
+# [PROTOCOL]: 变更时更新此头部，然后检查 CLAUDE.md
 """The radar's flow as an animated SVG, a GIF and an MP4: dots travel the connectors.
 
   python make_radar_v2.py <variant> <out-basename>     variant: prod-zh | oss-zh | oss-en

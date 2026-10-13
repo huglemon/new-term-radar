@@ -1,3 +1,8 @@
+# --- 文件契约 ---
+# [INPUT]: 依赖 sitemap 配置、标准库 HTTP/正则、snap 与 terms。
+# [OUTPUT]: 提供 sitemap 读取、URL 归一化与新增词信号 diff。
+# [POS]: radar 的竞品页面信号，以不同 URL 计数抑制重复。
+# [PROTOCOL]: 变更时更新此头部，然后检查 CLAUDE.md
 """Signal ③: pages other sites added since the last run.
 
 Reads the public sitemaps listed in config.json ("sitemaps"), keeps the last run's URLs

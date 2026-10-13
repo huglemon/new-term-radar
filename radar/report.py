@@ -1,3 +1,8 @@
+# --- 文件契约 ---
+# [INPUT]: 依赖各信号结果、config、judge、usecases 与 i18n 文案。
+# [OUTPUT]: 提供候选词合并、入库筛选、新词表渲染 keyword_table、usecase_leads 与两份报告。
+# [POS]: radar 的结果汇合点，统一名称、搜索变体与展示顺序。
+# [PROTOCOL]: 变更时更新此头部，然后检查 CLAUDE.md
 """Leads merged from every signal, and the two reports in Markdown."""
 from __future__ import annotations
 

@@ -1,3 +1,8 @@
+# --- 文件契约 ---
+# [INPUT]: 依赖 aisa 的取证、提词与搜索量、goanyapi 的相关查询与国家日走势、review 的未结算日剔除、snap 状态、config["usecases"]。
+# [OUTPUT]: 提供 run、names_to_read、due、degraded，以及形状、规模、决策、相关性判定函数。
+# [POS]: radar 的通用词信号；__main__ 的 daily 调用它，结果经 report.keyword_table 成表、经 store 入库复盘。
+# [PROTOCOL]: 变更时更新此头部，然后检查 CLAUDE.md
 """The generic terms behind the names: what people do with a new thing, as search terms.
 
 A name ("SynthID Detector") has a short life as a keyword and belongs to someone. The

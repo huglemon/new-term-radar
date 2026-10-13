@@ -1,3 +1,8 @@
+# --- 文件契约 ---
+# [INPUT]: 依赖 AIsa X 工具、Hugging Face 公共 API、snap 与 terms。
+# [OUTPUT]: 提供 x_new、hf_new、X 新名称判定与模型基础名归一化。
+# [POS]: radar 的高频来源信号，以滚动词表和榜单快照识别新名。
+# [PROTOCOL]: 变更时更新此头部，然后检查 CLAUDE.md
 """Signal ①, the sources: where a new name is said first.
 
 x_new    names in the last day's posts of the accounts in config.json ("x_accounts",

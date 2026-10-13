@@ -1,3 +1,8 @@
+# --- 文件契约 ---
+# [INPUT]: 依赖 AIsa WHOIS 工具、域名查询模式与新站阈值。
+# [OUTPUT]: 提供 new_sites、域名筛选与名称提取函数。
+# [POS]: radar 的每周新站信号，以注册和首次收录日期排除旧站。
+# [PROTOCOL]: 变更时更新此头部，然后检查 CLAUDE.md
 """Signal ③b: new sites that already draw search traffic.
 
 A word that catches on gets sites built for it: ai-hailuo.com was registered in August

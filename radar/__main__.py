@@ -1,3 +1,8 @@
+# --- 文件契约 ---
+# [INPUT]: 依赖配置、信号采集、名字判断、通用词、存储、报告与邮件模块。
+# [OUTPUT]: 提供 sources 与 daily 命令，写出报告及运行状态。
+# [POS]: radar 的编排入口，隔离单个信号失败并串联输出；daily 先跑通用词并把线索入库。
+# [PROTOCOL]: 变更时更新此头部，然后检查 CLAUDE.md
 """new-term-radar: terms that are starting to surge, earliest signal first.
 
   python -m radar daily    [--config config.json] [--state state] [--out report.md] [--skip x,hf,...] [--new-sites] [--mail]

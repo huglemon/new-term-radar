@@ -1,3 +1,8 @@
+# --- 文件契约 ---
+# [INPUT]: 依赖 Resend 环境配置、Markdown 报告与可选 markdown 包。
+# [OUTPUT]: 提供收件人解析、HTML 渲染与邮件发送 send。
+# [POS]: radar 的可选通知出口，由命令行 --mail 启用。
+# [PROTOCOL]: 变更时更新此头部，然后检查 CLAUDE.md
 """Mail a report (Markdown) through Resend. Optional.
 
 Environment: RESEND_API_KEY, EMAIL_FROM (an address on a domain you verified in Resend),

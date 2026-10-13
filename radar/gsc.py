@@ -1,3 +1,8 @@
+# --- 文件契约 ---
+# [INPUT]: 依赖 Google OAuth 刷新凭证与 Search Console API。
+# [OUTPUT]: 提供 fresh_queries 与 gsc_new，输出首次曝光的查询词。
+# [POS]: radar 的可选自有站信号，凭证来自本地文件或 CI 环境。
+# [PROTOCOL]: 变更时更新此头部，然后检查 CLAUDE.md
 """Signal ④ (optional): queries your own site got impressions for, for the first time.
 
 Search Console, fresh data (about a day behind instead of three; the numbers are revised

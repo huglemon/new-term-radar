@@ -1,3 +1,8 @@
+# --- 文件契约 ---
+# [INPUT]: 依赖 google-auth-oauthlib 与桌面 OAuth 客户端文件。
+# [OUTPUT]: 在当前工作目录写出 gsc_token.json。
+# [POS]: scripts 的一次性授权入口，向 radar.gsc 提供只读凭证。
+# [PROTOCOL]: 变更时更新此头部，然后检查 CLAUDE.md
 """Create gsc_token.json for the optional Search Console signal. Run once, on your own machine.
 
   pip install google-auth-oauthlib

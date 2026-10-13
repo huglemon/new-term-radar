@@ -1,3 +1,8 @@
+# --- 文件契约 ---
+# [INPUT]: 依赖 pathlib、gzip 与 JSON。
+# [OUTPUT]: 提供快照 load、save；缺失文件返回 None。
+# [POS]: radar 的文件状态边界，供采集信号比较前次结果。
+# [PROTOCOL]: 变更时更新此头部，然后检查 CLAUDE.md
 """Snapshots: yesterday's state of each signal, gzip JSON files in the state directory."""
 from __future__ import annotations
 

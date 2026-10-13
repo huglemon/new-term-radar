@@ -1,3 +1,8 @@
+# --- 文件契约 ---
+# [INPUT]: 依赖标准库正则、计数器与配置追加的停用词。
+# [OUTPUT]: 提供词拆分、名称提取、按来源计数与相对基线涨幅判定。
+# [POS]: radar 的共享提词逻辑，不执行网络请求与持久化。
+# [PROTOCOL]: 变更时更新此头部，然后检查 CLAUDE.md
 """Shared by the radar signals: split text into terms, score a surge.
 
 A surge is a term that shows up in many more places in the recent window than its

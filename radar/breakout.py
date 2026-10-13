@@ -1,3 +1,8 @@
+# --- 文件契约 ---
+# [INPUT]: 依赖 GitHub 公共 API、仓库阈值配置与 snap 快照。
+# [OUTPUT]: 提供 breakouts、仓库名称提取、涨星判定与搜索变体；候选词带出仓库全名。
+# [POS]: radar 的 GitHub 爆发信号，向报告提供仓库与候选名。
+# [PROTOCOL]: 变更时更新此头部，然后检查 CLAUDE.md
 """Signal ②: one new repo taking off on its own, anywhere on GitHub.
 
 A wave of repos sharing a word shows up days after the idea started. Strata

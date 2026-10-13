@@ -1,3 +1,8 @@
+# --- 文件契约 ---
+# [INPUT]: 依赖 sqlite3、JSON 与日期；接受报告筛选后的线索。
+# [OUTPUT]: 提供连接、线索合并、待复盘查询、结论保存与信号统计。
+# [POS]: radar 的历史状态边界，高频任务与每日任务共享数据库。
+# [PROTOCOL]: 变更时更新此头部，然后检查 CLAUDE.md
 """The radar's memory: every lead it reported, in one SQLite file (state/radar.db).
 
 record()          upserts today's leads.

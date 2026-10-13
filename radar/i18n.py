@@ -1,3 +1,8 @@
+# --- 文件契约 ---
+# [INPUT]: 依赖配置选择的报告语言与模板参数。
+# [OUTPUT]: 提供 set_lang、t 与中英文报告文案。
+# [POS]: radar 的报告文案边界，供信号注释与渲染共同使用。
+# [PROTOCOL]: 变更时更新此头部，然后检查 CLAUDE.md
 """Report text in English and Chinese. t("key", name=value) fills the template of the
 language set in config.json ("lang": "en" or "zh")."""
 from __future__ import annotations

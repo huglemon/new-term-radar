@@ -1,3 +1,8 @@
+# --- 文件契约 ---
+# [INPUT]: 读取环境变量 GOANYAPI_API_KEY、GOANYAPI_BASE_URL 与包内 UA 常量。
+# [OUTPUT]: 提供 key、call、related_queries、daily_series 与 GoAnyError。
+# [POS]: radar 的可选第二数据源，只服务 usecases 的相关查询与国家日走势；无 key 时调用方整体跳过。
+# [PROTOCOL]: 变更时更新此头部，然后检查 CLAUDE.md
 """Optional second data source: GoAnyAPI (goanyapi.com), for what AIsa's tools do not give.
 
 Used for two things: Google Trends' *related queries* for a name, the terms real people

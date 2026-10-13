@@ -1,3 +1,8 @@
+# --- 文件契约 ---
+# [INPUT]: 依赖 store 待复盘线索、AIsa Trends 工具与历史序列。
+# [OUTPUT]: 提供 review、settled 未结算日剔除、独立搜索变体规划与趋势判定函数。
+# [POS]: radar 的反馈回路，将延迟验证结果写回 SQLite；Trends 日序列先过 settled 再读。
+# [PROTOCOL]: 变更时更新此头部，然后检查 CLAUDE.md
 """The radar's review: check every lead in Google Trends two weeks later.
 
 review()  takes up to `per_day` leads first seen `after_days` ago or earlier and not yet

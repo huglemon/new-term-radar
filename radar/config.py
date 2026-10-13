@@ -1,3 +1,8 @@
+# --- 文件契约 ---
+# [INPUT]: 依赖 JSON 配置、i18n 语言选择与 terms 停用词扩展。
+# [OUTPUT]: 提供默认配置、load 与已覆盖词判定 known。
+# [POS]: radar 的配置入口；密钥由各服务从环境读取。
+# [PROTOCOL]: 变更时更新此头部，然后检查 CLAUDE.md
 """config.json: what to watch. Copy config.example.json and edit it.
 
 Everything has a default except the X accounts and the sitemaps, which only you can

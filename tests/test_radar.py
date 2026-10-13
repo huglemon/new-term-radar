@@ -1,3 +1,8 @@
+# --- 文件契约 ---
+# [INPUT]: 依赖 radar 各模块、pytest 夹具与 WHOIS 样本。
+# [OUTPUT]: 提供离线回归测试，覆盖新词表与未结算日剔除；网络调用使用替身。
+# [POS]: tests 的逻辑验证入口，不验证真实上游可用性。
+# [PROTOCOL]: 变更时更新此头部，然后检查 CLAUDE.md
 """The radar's pure logic: name extraction, signal scoring, the store, the judge's parsing,
 the review's verdict, the reports. Network calls are not exercised here."""
 import json
